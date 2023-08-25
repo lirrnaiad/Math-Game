@@ -11,7 +11,22 @@ import java.util.Random;
  * @author Sean
  */
 public class MathGame {
-
+    
+    public static class Difficulty {
+         public static void difficultyInfo(int diffMin_easy, int diffMax_easy, int diffMin_medium, int diffMax_medium, int diffMin_hard, int diffMax_hard){
+             System.out.println("Choose a difficulty!");
+             System.out.println("1. Easy - numbers " + diffMin_easy + " - " + diffMax_easy);
+             System.out.println("2. Medium - numbers " + diffMin_medium + " - " + diffMax_medium);
+             System.out.println("3 .Hard - numbers " + diffMin_hard + " - " + diffMax_hard);
+            }
+            
+         public int difficultyInput(){
+             Scanner difficultyChoice = new Scanner(System.in);
+             int difficulty = difficultyChoice.nextInt();
+             return difficulty;
+         }
+    }
+        
     public static void main(String[] args) {
         System.out.println("Welcome to the Math Game!");
         System.out.println("Here are the games you can play:");
@@ -23,20 +38,17 @@ public class MathGame {
         Scanner gameChoice = new Scanner(System.in);
         int game = gameChoice.nextInt();
         
-        switch (game) {
+        switch(game) {
             case 1:
-                System.out.println("Choose a difficulty!");
-                System.out.println("1. Easy - numbers 1-100");
-                System.out.println("2. Medium - numbers 1000 - 10000");
-                System.out.println("3.Hard - numbers 10000 - 100000");
-                Scanner difficultyChoice = new Scanner(System.in);
-                int difficulty = difficultyChoice.nextInt();
+                Difficulty.difficultyInfo(1, 99, 100, 999, 1000, 9999);
+                Difficulty diff = new Difficulty();
+                int difficulty = diff.difficultyInput();
                     
                 switch (difficulty) {
                     case 1:
                         while(true){
                             Random easyAdd = new Random();
-                            int easyLimit = 100;
+                            int easyLimit = 99;
                             int numOne = easyAdd.nextInt(easyLimit);
                             int numTwo = easyAdd.nextInt(easyLimit);
                             int answer = numOne + numTwo;
@@ -59,4 +71,4 @@ public class MathGame {
         }
         
     }
-}
+}   
