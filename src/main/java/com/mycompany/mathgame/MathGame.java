@@ -12,6 +12,24 @@ import java.util.Random;
  */
 public class MathGame {
     
+    public static class Startup {
+        public static void startupInfo() {
+            System.out.println("Welcome to the Math Game!");
+            System.out.println("Here are the games you can play:");
+            System.out.println("1. Addition");
+            System.out.println("2. Subtraction");
+            System.out.println("3. Multiplication");
+            System.out.println("4. Division");
+            System.out.print("Choose a game: ");
+        }
+        
+        public int gameInput() {
+            Scanner gameChoice = new Scanner(System.in);
+            int game = gameChoice.nextInt();
+            return game;
+        }
+    }
+    
     public static class Difficulty {
          public static void difficultyInfo(int diffMin_easy, int diffMax_easy, int diffMin_medium, int diffMax_medium, int diffMin_hard, int diffMax_hard){
              System.out.println("Choose a difficulty!");
@@ -26,17 +44,19 @@ public class MathGame {
              return difficulty;
          }
     }
+    
+    /*
+    public static class Game {
+        public static gameLoop() {
+            
+        }
+    }
+    */
         
     public static void main(String[] args) {
-        System.out.println("Welcome to the Math Game!");
-        System.out.println("Here are the games you can play:");
-        System.out.println("1. Addition");
-        System.out.println("2. Subtraction");
-        System.out.println("3. Multiplication");
-        System.out.println("4. Division");
-        System.out.print("Choose a game: ");
-        Scanner gameChoice = new Scanner(System.in);
-        int game = gameChoice.nextInt();
+        Startup.startupInfo();
+        Startup start = new Startup();
+        int game = start.gameInput();
         
         switch(game) {
             case 1:
